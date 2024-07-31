@@ -6,7 +6,7 @@ addTaskBtn.addEventListener("click",()=>{
     let card=document.createElement("div");
     card.className="card";
     card.innerText="New Task";
-    
+
     todoContainer.append(card);
 })
 //push => append() (at last in the element)
