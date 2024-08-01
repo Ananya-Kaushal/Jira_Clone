@@ -23,16 +23,47 @@ addTaskBtn.addEventListener("click",()=>{
         {
             targetCard.innerText="";
         }
-
-        //2nd thing => focus,blur
-
-        card.addEventListener("blur",()=>{
-            if(targetCard.innerText.trim()=="")
-            {
-                targetCard.remove();
-            }
-        })
     })//closure() function
+
+    //2nd thing => focus,blur
+
+    card.addEventListener("blur",()=>{
+        if(targetCard.innerText.trim()=="")
+        {
+            targetCard.remove();
+        }
+    })
+
+    //create dropdown:
+    let dropdown=document.createElement('select');
+
+    // dropdown.innerHTML=`
+    //     <option value="todo"> TODO </option>
+    //     <option value="inprogress"> IN PROGRESS </option>
+    //     <option value="done"> DONE </option>
+
+    // `
+
+    let array1=["TODO","IN PROGRESS","DONE"];
+    let array2=["todo","inprogress","done"];
+
+    for (let i = 0; i < array1.length; i++) {
+        let option=document.createElement('option');
+        option.value=array2[i];
+        option.innerText=array1[i];
+        dropdown.append(option);
+    }
+
+    card.append(dropdown);
+
+    //event=>change
+
+    dropdown.addEventListener("change",(e)=>{
+        let targetCardValue=e.target.value;//id of the column in which u want to move
+        console.log(targetCardValue);
+        let selectedColumn=document.getElementById(targetCardValue);
+        selectedColumn.append(card);
+    })
 
 })
 //push => append() (at last in the element)
